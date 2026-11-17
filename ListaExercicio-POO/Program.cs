@@ -16,7 +16,7 @@ string SetModelo()
 int SetAnoModelo()
 {
     Console.WriteLine("Digite o Ano do Modelo do Veiculo: ");
-    int anoModelo=int.Parse(Console.ReadLine());
+    int anoModelo = int.Parse(Console.ReadLine());
     return anoModelo;
 }
 int SetAnoFabricacao()
@@ -31,34 +31,51 @@ double SetValorVenda()
     double valorVenda = double.Parse(Console.ReadLine());
     return valorVenda;
 }
+
+Motor PopularMotor()
+{
+    Motor m = new();
+    Console.WriteLine("Digite o tipo de gasolina do motor: ");
+    m.SetCombustive(Console.ReadLine());
+    Console.WriteLine("Digite a cilindrada: ");
+    m.SetCilindrada(int.Parse(Console.ReadLine()));
+    Console.WriteLine("Digite a potencia: ");
+    m.SetPotencia(int.Parse(Console.ReadLine()));
+
+    return m;
+}
 Carro PopulaCarro()
 {
-    Carro c = new(SetFabricante(), SetModelo(), SetAnoModelo(), SetAnoFabricacao(), SetValorVenda());
+    Carro c = new(SetFabricante(), SetModelo(), SetAnoModelo(), SetAnoFabricacao(), SetValorVenda(),PopularMotor());
+    return c;
+}
+Carro[] PopulaVetor()
+{
+    Carro[] c = new Carro[4];
+    for (int i = 0; i < 4; i++)
+    {
+        Console.WriteLine("Carro " + i);
+        c[i] = PopulaCarro();
+    }
     return c;
 }
 void ImprimeVetor(Carro[] listaCarro)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        Console.WriteLine(listaCarro[i].ToString());
-    }
+    const double aliquotaIpva = 4.0;
 
+    for (int i = 0; i < listaCarro.Length; i++)
+    {
+        double ipva = listaCarro[i].CalcularIpva(aliquotaIpva);
+
+        Console.WriteLine(listaCarro[i]);
+        Console.WriteLine($"IPVA previsto: {ipva:C2}");
+        Console.WriteLine();
+    }
 }
+
 
 Carro[] listaCarro = new Carro[4];
 
-Console.WriteLine("Carro1");
-Carro carro1 = PopulaCarro();
-Console.WriteLine("Carro2");
-Carro carro2 = PopulaCarro();
-Console.WriteLine("Carro3");
-Carro carro3 = PopulaCarro();
-Console.WriteLine("Carro4");
-Carro carro4 = PopulaCarro();
-
-listaCarro[0] = carro1;
-listaCarro[1] = carro2;
-listaCarro[2] = carro3;
-listaCarro[3] = carro4;
+listaCarro = PopulaVetor();
 
 ImprimeVetor(listaCarro);

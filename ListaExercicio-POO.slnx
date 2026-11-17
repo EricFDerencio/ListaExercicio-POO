@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="Banco/Banco.csproj" Id="e3d7d7bf-3450-481d-8f1e-99c7e6ab08ed" />
   <Project Path="ListaExercicio-POO/VetorCarro.csproj" />
+  <Project Path="Livros/Livros.csproj" Id="8d3b6835-890e-4dea-bbb1-fe7b5d753ae9" />
 </Solution>
