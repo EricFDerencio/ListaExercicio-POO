@@ -1,6 +1,4 @@
-﻿namespace Livros;
-
-internal class Livro
+﻿public class Livro
 {
     private string titulo;
     private string autor;
@@ -8,17 +6,11 @@ internal class Livro
 
     public Livro(string titulo, string autor, int numeroPaginas)
     {
-        if (numeroPaginas <= 0)
-        {
-            throw new ArgumentException(
-                "O número de páginas deve ser positivo.",
-                nameof(numeroPaginas));
-        }
-
         this.titulo = titulo;
         this.autor = autor;
         this.numeroPaginas = numeroPaginas;
     }
+  
 
     public string GetTitulo()
     {
