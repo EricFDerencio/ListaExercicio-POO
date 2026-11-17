@@ -2,9 +2,9 @@
 {
     private string titulo;
     private string autor;
-    private int numeroPaginas;
+    private uint numeroPaginas;
 
-    public Livro(string titulo, string autor, int numeroPaginas)
+    public Livro(string titulo, string autor, uint numeroPaginas)
     {
         this.titulo = titulo;
         this.autor = autor;
@@ -22,7 +22,7 @@
         return autor;
     }
 
-    public int GetNumeroPaginas()
+    public uint GetNumeroPaginas()
     {
         return numeroPaginas;
     }
